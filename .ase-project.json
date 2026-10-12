@@ -1,0 +1,47 @@
+{
+  "name": "cyber-defense-portfolio",
+  "version": "1.0.0",
+  "description": "Interactive 3D animated cybersecurity portfolio featuring WebGL defense core, live interactive terminal, vulnerability lab, MITRE ATT&CK intelligence, and production-ready architecture.",
+  "tech_stack": [
+    "Vite 6",
+    "React 18",
+    "TypeScript 5.6",
+    "Three.js 0.170 (WebGL 3D Engine)",
+    "Tailwind CSS 3.4",
+    "Lucide React"
+  ],
+  "conventions": [
+    "All components use named exports or clean modular exports",
+    "Zero generic AI slop: no purple gradients, no pill CTA buttons, no fake reviews/metrics",
+    "Preserve native OS cursor and accessible responsive layout",
+    "Strict TypeScript typing, no any",
+    "Full production essentials: custom metadata, favicon suite, /privacy and /terms pages"
+  ],
+  "architecture_patterns": [
+    "Modular component design under src/components",
+    "3D WebGL scenes encapsulated with clean lifecycle management and cleanup",
+    "Client-side simulated terminal and cybersecurity intelligence modules"
+  ],
+  "file_structure": {
+    "src": "Application source code",
+    "src/components": "UI and 3D visual components",
+    "src/components/canvas": "Three.js 3D WebGL canvas scenes",
+    "src/data": "Cybersecurity projects, skills, research, and CTF data",
+    "public": "Static assets including full favicon suite"
+  },
+  "deployment": {
+    "platform": "Vercel / GitHub Pages",
+    "branch_strategy": "main → production"
+  },
+  "never_do": [
+    "Never use purple gradients, pill buttons, fake reviews/metrics/counters, vague hero text, emoji icons, em dashes, crazy scroll/cursor animations, or AI slop photos/copy on websites",
+    "Never let an AI grade its own work without independent gate verification",
+    "Never leave completed work uncommitted or unpushed to GitHub",
+    "Never run unsolicited background daemons, update pollers, or indexing services on Arch Linux"
+  ],
+  "preferred_patterns": [
+    "Practice extreme token economy: keep responses concise, high-signal, and directly answer user requests without unprompted changelogs or filler",
+    "Always mandate production web essentials: custom domain metadata, custom favicon suite, remove AI badges, /privacy page, and /terms page",
+    "Always enforce Arch Linux On-Demand System Governance (run interactive tools on-demand, terminate completely on exit)"
+  ]
+}

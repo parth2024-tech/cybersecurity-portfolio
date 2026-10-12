@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <radialGradient id="cyberGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#07090e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Dark Background -->
+  <rect width="128" height="128" rx="28" fill="#07090e"/>
+  <circle cx="64" cy="64" r="54" fill="url(#cyberGlow)"/>
+  <rect x="2" y="2" width="124" height="124" rx="26" fill="none" stroke="#1e293b" stroke-width="2"/>
+  
+  <!-- Outer Shield Outline -->
+  <path d="M64 20 L96 34 V66 C96 86 64 104 64 104 C64 104 32 86 32 66 V34 Z" 
+        fill="#0c1017" stroke="url(#shieldGrad)" stroke-width="4" stroke-linejoin="round"/>
+        
+  <!-- Tactical Circuit / Core -->
+  <circle cx="64" cy="60" r="14" fill="#111722" stroke="#10b981" stroke-width="2.5"/>
+  <circle cx="64" cy="60" r="5" fill="#10b981"/>
+  
+  <!-- Crosshair Guides -->
+  <line x1="64" y1="38" x2="64" y2="46" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="64" y1="74" x2="64" y2="84" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="42" y1="60" x2="50" y2="60" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="78" y1="60" x2="86" y2="60" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Binary / Security Accent Dots -->
+  <circle cx="50" cy="46" r="1.5" fill="#10b981"/>
+  <circle cx="78" cy="46" r="1.5" fill="#10b981"/>
+  <circle cx="50" cy="74" r="1.5" fill="#06b6d4"/>
+  <circle cx="78" cy="74" r="1.5" fill="#06b6d4"/>
+</svg>
