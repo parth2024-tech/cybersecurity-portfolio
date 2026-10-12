@@ -5,19 +5,23 @@ import { Cyber3DScene, SceneMode } from './components/canvas/Cyber3DScene';
 import { TerminalConsole } from './components/TerminalConsole';
 import { ProjectsSection } from './components/ProjectsSection';
 import { InteractiveSecurityLab } from './components/InteractiveSecurityLab';
+import { PacketSniffer } from './components/tools/PacketSniffer';
+import { CyberDesktopOS } from './components/desktop/CyberDesktopOS';
 import { SkillsArsenal } from './components/SkillsArsenal';
 import { CertificationsSection } from './components/CertificationsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
-import { Shield, Sparkles, Terminal, Cpu } from 'lucide-react';
+import { Shield, Terminal, Cpu, Network, Monitor, Sparkles, FileSpreadsheet } from 'lucide-react';
+import { audioFeedback } from './utils/audioFeedback';
 
 export const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'home' | 'privacy' | 'terms'>('home');
+  const [experienceMode, setExperienceMode] = useState<'briefing' | 'os'>('briefing');
   const [sceneMode, setSceneMode] = useState<SceneMode>('sentinel');
 
-  // Sync with URL hash / path
+  // URL hash routing
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
@@ -27,6 +31,8 @@ export const App: React.FC = () => {
       } else if (hash === '#/terms' || hash === '#terms') {
         setCurrentView('terms');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#/os' || hash === '#os') {
+        setExperienceMode('os');
       } else {
         if (currentView !== 'home') setCurrentView('home');
       }
@@ -45,9 +51,18 @@ export const App: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const toggleExperienceMode = () => {
+    setExperienceMode(curr => (curr === 'briefing' ? 'os' : 'briefing'));
+  };
+
   return (
     <div className="min-h-screen bg-cyber-bg text-cyber-text cyber-grid-bg flex flex-col selection:bg-cyber-accent selection:text-cyber-bg">
-      <Navbar currentView={currentView} onNavigate={handleNavigate} />
+      <Navbar
+        currentView={currentView}
+        experienceMode={experienceMode}
+        onNavigate={handleNavigate}
+        onToggleExperienceMode={toggleExperienceMode}
+      />
 
       <main className="flex-1">
         {currentView === 'privacy' && (
@@ -58,8 +73,29 @@ export const App: React.FC = () => {
           <TermsPage onBack={() => handleNavigate('home')} />
         )}
 
-        {currentView === 'home' && (
+        {currentView === 'home' && experienceMode === 'os' && (
+          <CyberDesktopOS onSwitchToBriefing={() => setExperienceMode('briefing')} />
+        )}
+
+        {currentView === 'home' && experienceMode === 'briefing' && (
           <>
+            {/* Top Experience Banner Prompter */}
+            <div className="bg-cyber-surface/70 border-b border-cyber-border py-2.5 px-4 text-center font-mono text-xs">
+              <div className="inline-flex items-center gap-2 text-cyber-muted">
+                <span className="w-2 h-2 rounded-full bg-cyber-accent animate-ping" />
+                <span>Want to test the full SecOps workstation simulation?</span>
+                <button
+                  onClick={() => {
+                    audioFeedback.playChime();
+                    setExperienceMode('os');
+                  }}
+                  className="text-cyber-cyan hover:text-cyber-accent font-bold underline transition-colors"
+                >
+                  Launch CyberOS Desktop Workspace →
+                </button>
+              </div>
+            </div>
+
             {/* 1. Direct, High-Craft Hero Section */}
             <Hero />
 
@@ -113,7 +149,27 @@ export const App: React.FC = () => {
             {/* 4. Research Projects Section */}
             <ProjectsSection />
 
-            {/* 5. Interactive Security Lab Tools */}
+            {/* 5. Live Wireshark-Lite Packet Sniffer */}
+            <section id="sniffer" className="py-16 md:py-20 border-b border-cyber-border">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+                <div className="space-y-2">
+                  <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-cyber-surface border border-cyber-border rounded-md text-xs font-mono text-cyber-red">
+                    <Network className="w-3.5 h-3.5" />
+                    <span>NETWORK TRAFFIC TELEMETRY</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-cyber-text tracking-tight">
+                    Wireshark-Lite // Real-Time Packet Sniffer & Hex Analyzer
+                  </h2>
+                  <p className="text-sm text-cyber-muted max-w-2xl">
+                    Inspect live simulated packet captures across raw Ethernet, IPv4, TCP, and TLS layers with automated IDS anomaly detection.
+                  </p>
+                </div>
+
+                <PacketSniffer />
+              </div>
+            </section>
+
+            {/* 6. Interactive Security Lab Tools */}
             <section id="lab" className="py-16 md:py-20 border-b border-cyber-border bg-cyber-surface/20">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 <div className="space-y-2">
@@ -133,13 +189,13 @@ export const App: React.FC = () => {
               </div>
             </section>
 
-            {/* 6. Skills Arsenal & CTF Performance */}
+            {/* 7. Skills Arsenal & CTF Performance */}
             <SkillsArsenal />
 
-            {/* 7. Industry Certifications & Degree */}
+            {/* 8. Industry Certifications & Degree */}
             <CertificationsSection />
 
-            {/* 8. Contact & PGP Transmission Dispatch */}
+            {/* 9. Contact & PGP Transmission Dispatch */}
             <ContactSection />
           </>
         )}

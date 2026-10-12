@@ -6,13 +6,22 @@ A high-performance, interactive 3D WebGL portfolio designed for cybersecurity st
 
 ## Core Architectural Features
 
-### 1. Interactive Three.js 3D Sentinel Core
+### 1. Dual-Experience Runtime: CyberOS Desktop & Executive Briefing
+- **CyberOS Desktop Workstation (`#/os`)**: A full draggable, stackable windowed Linux/SecOps environment inside the browser. Manage concurrent floating windows (Terminal, 3D Radar, Packet Sniffer, Case Files, Cipher Lab, Credentials) with window minimize, maximize, and active taskbar docking.
+- **Executive Briefing Mode**: Fast, high-signal, accessible document scroll experience designed for 30-second hiring manager evaluations.
+
+### 2. Interactive Three.js 3D Sentinel Core
 - **Mode 1: Sentinel Cyber Core** — Multi-layered geodesic defense shield, concentric cryptographic gimbal rings, and real-time orbiting threat telemetry particles.
 - **Mode 2: Network Topology & Threat Map** — Dynamic 3D network node discovery with real-time packet propagation.
 - **Mode 3: Packet Interceptor Collider** — High-speed packet stream filtered by firewall plane into Clean Traffic (Emerald) and Blocked Threats (Crimson).
 - **User Orbit Controls** — Full interactive mouse dragging and inspection with zero scroll-jacking.
 
-### 2. Live Interactive Security Operations Terminal
+### 3. Wireshark-Lite Network Packet Sniffer
+- Real-time simulated raw packet capture stream across Ethernet II, IPv4, TCP, DNS, TLS 1.3, and ARP.
+- Deep packet inspection: Decoded protocol layers, raw HEX & ASCII memory dump with offset markers.
+- Automated IDS signature detection (Tor exit node probes, Xmas scans, SYN floods).
+
+### 4. Live Interactive Security Operations Terminal
 - Embedded Unix-style CLI with command history and autocomplete:
   - `help`: Comprehensive command index
   - `whoami`: Candidate profile, academic degree, and specialization
